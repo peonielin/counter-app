@@ -1,0 +1,74 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Goal-List{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 5px;
+}
+
+.goals-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.singular-goal{
+  display: flex;
+  padding: 5px 5px;
+  margin: 5px 20px;
+}
+
+.placeholder{
+  display: flex;
+  background: grey;
+  height: 100px;
+  width: 80px;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.goal-name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.hamburger {
+  display: inline-block;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 28px;
+  height: 4px;
+  background-color: #333;
+  margin: 4px 0;
+  transition: 0.4s;
+  border-radius: 15px; 
+}
+
+/* Rotate first bar */
+.change .bar1 {
+  transform: translate(0, 8px) rotate(-45deg);
+}
+
+/* Fade out the second bar */
+.change .bar2 {opacity: 0;}
+
+/* Rotate last bar */
+.change .bar3 {
+  transform: translate(0, -8px) rotate(45deg);
+}
