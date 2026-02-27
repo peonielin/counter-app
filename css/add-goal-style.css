@@ -3,9 +3,6 @@
   padding: 0;
 }
 
-.links{
-  list-style-type: none;
-}
 
 .Goal-Title{
   display: flex;
@@ -78,4 +75,8 @@
   align-items: center;
   font-size: 1em; /* Styles the arrow size */
 
+}
+
+a{
+  text-decoration: none;
 }
