@@ -22,12 +22,8 @@
 
   <div class="goals-container">
     <div class="goal-name-container">
-       <div class="goal-name">
-        <h1>What's your goal?</h1>
-      </div>
+      <input placeholder="Enter Your Goal" id = "goalName" />
     </div>
-   
-    
     <div class="counting-container">
       
       <h2>Counting</h2>
@@ -35,28 +31,28 @@
       <div class="counting-detail-container">
         <div class="counting-detail">
       <h3>Target</h3>
-      <div class="input-container">1200</div>
+      <input placeholder="target" id = "targetNum" />
     </div>
     
     <div class="counting-detail">
       <h3>Start at</h3>
-      <div class="input-container">0</div>
+      <input placeholder="0" id = "startingNum" />
     </div>
     
     <div class="counting-detail">
       <h3>Units</h3>
-      <div class="input-container">km</div>
+      <input placeholder="units" id = "goalUnits"  />
     </div>
 
     <div class="counting-detail">
       <h3>Increment</h3>
-      <div class="input-container">1</div>
+      <input placeholder="Increment" id = "goalIncrement"  />
     </div>
         
         
       </div>
       <div class="pill-container">
-        <a href="../html/home.html" class="pill">Save</a>
+        <a href="../html/home.html" class="pill" id="saveButton">Save</a>
         
       </div>
 
@@ -71,6 +67,6 @@
 
   
   
-   <script src="../javascript/home.js"></script>
+   <script src="../javascript/set-goal.js"></script>
   </body>
 </html>
