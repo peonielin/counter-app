@@ -1,5 +1,5 @@
 const goalIDs = ["#goalName","#targetNum","#startingNum","#goalUnits","#goalIncrement"];
-const save = document.querySelector(#saveButton);
+const save = document.querySelector("#saveButton");
 let i = 0;
 
 let storedGoalVariables = [];
@@ -14,12 +14,12 @@ let allStoredGoalVariables = [];
 for (let i=0; i<5;i++){
     createInputs[i].addEventListener("input", (e)=>{
         storedGoalVariables[i] = e.target.value;
-        allStoredGoalVariables.push(storedGoalVariables);
+        allStoredGoalVariables.push([...storedGoalVariables]);
     });
 
 }
 
-if(save.addEventListener("click", () =>{
+save.addEventListener("click", () =>{
 
 const result = allStoredGoalVariables.map(
   ([goalName, target, starting, unit, increment]) => ([
@@ -33,9 +33,10 @@ const result = allStoredGoalVariables.map(
 
     localStorage.setItem('result', JSON.stringify(result));
 
-}));
+});
 
 
 ``
+
 
 
