@@ -1,3 +1,3 @@
-function myFunction(x) {
+function changeToCross(x) {
   x.classList.toggle("change");
 }
