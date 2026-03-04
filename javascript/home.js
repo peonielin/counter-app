@@ -2,7 +2,11 @@ function changeToCross(x) {
   x.classList.toggle("change");
 }
 
-const importArray = [
+const retrievedObject = localStorage.getItem('result');
+
+const importArray = JSON.parse(retrievedObject);
+
+/*const importArray = [
     { newGoalName: "bike" ,
      newTargetNum: 1200 ,
     newStartingNum: 1000 ,
@@ -17,7 +21,7 @@ const importArray = [
      newTargetNum: "1200" ,
     newStartingNum: 400 ,
     newGoalUnits: "km" ,
-    newGoalIncrement: "1" }]
+    newGoalIncrement: "1" }]*/
     
 const goalListContainer = document.querySelector(".goals-container");
 
