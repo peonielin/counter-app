@@ -2,7 +2,7 @@ function changeToCross(x) {
   x.classList.toggle("change");
 }
 
-/* const importArray = [
+const importArray = [
     { newGoalName: "bike" ,
      newTargetNum: 1200 ,
     newStartingNum: 1000 ,
@@ -17,7 +17,7 @@ function changeToCross(x) {
      newTargetNum: "1200" ,
     newStartingNum: 400 ,
     newGoalUnits: "km" ,
-    newGoalIncrement: "1" }] */
+    newGoalIncrement: "1" }]
     
 const goalListContainer = document.querySelector(".goals-container");
 
@@ -28,3 +28,5 @@ for(let i =0; i<importArray.length;i++){
   newDiv.innerHTML = item.newGoalName +" "+ item.newStartingNum +"/" +item.newTargetNum+ item.newGoalUnits + " "+ ((item.newStartingNum/item.newTargetNum)*100)+ "%" 
   goalListContainer.appendChild(newDiv);
 }
+
+
