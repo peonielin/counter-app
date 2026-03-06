@@ -2,35 +2,48 @@ function changeToCross(x) {
   x.classList.toggle("change");
 }
 
-const retrievedObject = localStorage.getItem('result');
+const retrievedObject = localStorage.getItem("goalList");
+const Progress = localStorage.getItem("Progress");
 
 const importArray = JSON.parse(retrievedObject);
 
-/*const importArray = [
-    { newGoalName: "bike" ,
-     newTargetNum: 1200 ,
-    newStartingNum: 1000 ,
-    newGoalUnits: "km" ,
-    newGoalIncrement: 1 },
-        { newGoalName: "bike" ,
-     newTargetNum: "1200" ,
-    newStartingNum: 160 ,
-    newGoalUnits: "km" ,
-    newGoalIncrement: "1" },
-        { newGoalName: "bike" ,
-     newTargetNum: "1200" ,
-    newStartingNum: 400 ,
-    newGoalUnits: "km" ,
-    newGoalIncrement: "1" }]*/
-    
 const goalListContainer = document.querySelector(".goals-container");
 
-for(let i =0; i<importArray.length;i++){
+if (goalListContainer.textContent === 0) {
+  goalListContainer.textContent = "Add your first goal";
+}
+
+for (let i = 0; i < importArray.length; i++) {
   const item = importArray[i];
-  const newDiv = document.createElement('div');
+  const newDiv = document.createElement("div");
+  const goalName = document.createElement("a");
+  const currentProgress = item.currentProgress || item.newStartingNum;
+  const percentage = Math.round((currentProgress / item.newTargetNum) * 100);
+  goalName.href = "../html/add-goal.html";
+  goalName.className = "goal-name";
+  goalName.textContent = item.newGoalName + " ";
   newDiv.className = "singular-goal";
-  newDiv.innerHTML = item.newGoalName +" "+ item.newStartingNum +"/" +item.newTargetNum+ item.newGoalUnits + " "+ ((item.newStartingNum/item.newTargetNum)*100)+ "%" 
+  newDiv.innerHTML =
+    currentProgress +
+    "/" +
+    item.newTargetNum +
+    item.newGoalUnits +
+    " " +
+    percentage +
+    "%";
+
+  goalName.addEventListener("click", (event) => {
+    event.preventDefault();
+    localStorage.setItem("selectedIndex", i);
+    window.location.href = goalName.href;
+  });
+
+  newDiv.appendChild(goalName);
   goalListContainer.appendChild(newDiv);
 }
 
-
+const emptyGoalListButton = document.querySelector(".empty-goal-list");
+emptyGoalListButton.addEventListener("click", () => {
+  localStorage.clear();
+  goalListContainer.textContent = "";
+});

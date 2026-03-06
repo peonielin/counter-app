@@ -1,46 +1,64 @@
-const goalIDs = ["#goalName","#targetNum","#startingNum","#goalUnits","#goalIncrement"];
+const goalIDs = [
+  "#goalName",
+  "#targetNum",
+  "#startingNum",
+  "#goalUnits",
+  "#goalIncrement",
+];
+
+const goalList = JSON.parse(localStorage.getItem("goalList")) || [];
+
 const save = document.querySelector("#saveButton");
-let i = 0;
 
 let storedGoalVariables = [];
-for (let i=0; i<5;i++){
-    storedGoalVariables[i] = "stored" + i;
+
+let createInputs = goalIDs.map((id) => document.querySelector(id));
+
+for (let i = 0; i < 5; i++) {
+  createInputs[i].addEventListener("input", (e) => {
+    const value = e.target.value;
+
+    if (i === 0 || i === 3) {
+      if (/^[A-Za-z]{0,20}$/.test(value)) {
+        storedGoalVariables[i] = value;
+      } else {
+        alert("Enter letters only");
+      }
+    } else {
+      if (/^[0-9]{0,4}$/.test(value)) {
+        storedGoalVariables[i] = value;
+      } else {
+        alert("Enter numbers only");
+      }
+    }
+  });
 }
 
-let createInputs = goalIDs.map(id => document.querySelector(id));
+if (save) {
+  save.addEventListener("click", () => {
+    if (
+      storedGoalVariables.length !== 5 ||
+      storedGoalVariables.some((val) => !val)
+    ) {
+      alert("Please fill in all fields correctly");
+      return;
+    }
 
-
-for (let i=0; i<5;i++){
-    createInputs[i].addEventListener("input", (e)=>{
-        storedGoalVariables[i] = e.target.value;
-    });
-
+    const [
+      newGoalName,
+      newTargetNum,
+      newStartingNum,
+      newGoalUnits,
+      newGoalIncrement,
+    ] = storedGoalVariables;
+    const singleGoal = {
+      newGoalName,
+      newTargetNum,
+      newStartingNum,
+      newGoalUnits,
+      newGoalIncrement,
+    };
+    goalList.push(singleGoal);
+    localStorage.setItem("goalList", JSON.stringify(goalList));
+  });
 }
-let goalList = [];
-const singleGoal ={...storedGoalVariables};
-goalList.push(singleGoal);
-localStorage.setItem('goalList', JSON.stringify(result));
-
-
-
-save.addEventListener("click", () =>{
-
-const result = allStoredGoalVariables.map(
-  ([goalName, target, starting, unit, increment]) => ([
-    { newGoalName: goalName },
-    { newTargetNum: Number(target) },
-    { newStartingNum: Number(starting) },
-    { newGoalUnits: unit },
-    { newGoalIncrement: Number(increment) },
-  ])
-);
-
-    localStorage.setItem('result', JSON.stringify(result));
-
-});
-
-
-``
-
-
-
